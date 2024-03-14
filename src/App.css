@@ -1,38 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url('https://th.bing.com/th/id/OIG3.l31_hGppb8L2e2nd3Nul?pid=ImgGn');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Add animation for ToDoWrapper */
+.ToDoWrapper {
+  background: transparent;
+  backdrop-filter: blur(50px);
+  margin-top: 5rem;
+  border: 5px solid black;
+  padding: 2rem;
+  border-radius: 10px;
+  width: auto;
+  animation: slideInFromTop 1s ease; /* Apply animation */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+@keyframes slideInFromTop {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(-50px); /* Start slightly above */
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0); /* Move to original position */
+  }
+}
+
+
+.TodoForm {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.todo-input {
+  outline: none;
+  background: none;
+  border: 2px solid black;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  width: 300px;
+  color: #fff;
+}
+
+.todo-input::placeholder {
+  color: #ffffff4d;
+}
+
+.todo-btn {
+  background: #8758ff;
+  color: #fff;
+  border: 2px solid black;
+  padding: 0.55rem;
+  cursor: pointer;
+}
+
+@keyframes taskAddedAnimation {
+  0% {
+    transform: scale(0.9); /* Start with slightly smaller size */
+    opacity: 0; /* Start with opacity 0 */
+  }
+  100% {
+    transform: scale(1); /* Scale up to normal size */
+    opacity: 1; /* Fade in */
+  }
+}
+
+/* Apply the animation to the Todo component */
+.Todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(93, 89, 89);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border: 3px solid black;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  animation: taskAddedAnimation 0.5s ease; /* Apply animation */
+}
+
+.Todo:first-child {
+  animation-delay: 0.1s; /* Delay animation for 0.1s */
+}
+
+.Todo p {
+  cursor: pointer;
+}
+
+.fa-trash {
+  margin-left: 0.75rem;
+  cursor: pointer;
+}
+
+.fa-pen-to-square {
+  cursor: pointer; 
+}
+
+.fa-angle-left {
+  cursor: pointer;
+  margin-left: 0.75rem;
+}
+
+.incompleted {
+  color: #fff;
+  cursor: pointer;
+}
+
+.completed {
+  color: #c5aeff;
+  text-decoration: line-through;
+  cursor: pointer;
+}
+
+.edit-icon,
+.delete-icon {
+  cursor: pointer;
+}
+ 
+.noTask {
+  color: white;
+  padding: 3px;
+  margin-bottom: 3px;
+}
+
+.todo-icon {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.todo-icon:hover {
+  opacity: 0.7; 
+}
+
+.filter-icon {
+  margin-left: 10px;
+  padding: 3px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.filter-menu {
+  display: flex;
+  flex-direction: column;
+  animation: slideInFromTop 0.5s ease-in;
+  margin-bottom: 10px;
+  position: absolute;
+  right: -10px;
+  top: 145px;
+  background-color: rgb(142, 129, 129);
+  padding: 8px;
+  border-radius: 5px;
+  border: 2px solid black;
+}
+
+.filter-menu button {
+  background: transparent;
+  padding: 5px;
+  cursor: pointer;
+  width: 90px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.filter-menu button:hover {
+  background-color: #8758ff;
+  color: white;
+  transition: 0.5s ease;
+  width: 95px;
+  height: 50px;
+}
+
+.arrow {
+  position: absolute;
+  right: 32px;
+  top: 120px;
+  font-size: 45px;
+  color: black;
+  animation: slideInFromTop 0.5s ease-in;
+}
+
+.todo-icon.rotate-180 {
+  transform: rotate(180deg); 
+  transition: transform 0.5s ease;
+}
+
+.timestamp {
+  animation: slideInFromLeft 0.5s ease; /* Apply animation */
+}
+
+footer {
+  font-size: 10px;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(0); /* Start from left of its container */
+  }
+  to {
+    transform: translateX(-5%); /* Move to original position */
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  /* Adjust ToDoWrapper margin-top for smaller screens */
+  .ToDoWrapper {
+    margin-top: 18rem;
+    margin-bottom: 13.5rem;
+    height: 520px;
+  }
+
+  /* Adjust TodoForm width for smaller screens */
+  .TodoForm {
+    width: 90%;
+  }
+
+  /* Adjust todo-input width for smaller screens */
+  .todo-input {
+    width: 100%;
+  }
+
+  /* Adjust filter-menu position for smaller screens */
+  .filter-menu {
+    right: -15px;
+    top: 160px;
+  }
+
+  .filter-icon {
+    position: relative;
+    top: -65px;
+    right: -125px;
+  }
+
+  /* Adjust arrow position for smaller screens */
+  .arrow {
+    right: 17px;
+    top: 125px;
+    font-size: 60px;
+  }
+
+  /* Adjust timestamp animation for smaller screens */
+  .timestamp {
+    animation: slideInFromLeft 0.5s ease;
+  }
+}
+
+/* Add the following media query for mobile phones */
+@media only screen and (max-width: 480px) {
+  /* Adjust ToDoWrapper margin-top for smaller screens */
+  body {
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .ToDoWrapper {
+    margin-top: 10rem;
+    margin-bottom: 13.5rem;
+    height: 520px;
+  }
+
+  /* Adjust TodoForm width for smaller screens */
+  .TodoForm {
+    width: 100%;
+  }
+
+  /* Adjust todo-input width for smaller screens */
+  .todo-input {
+    width: 100%;
+  }
+
+  /* Adjust filter-menu position for smaller screens */
+  .filter-menu {
+    right: -15px;
+    top: 148px;
+  }
+
+  .filter-icon {
+    position: relative;
+    top: -65px;
+    right: -128px;
+  }
+
+  /* Adjust arrow position for smaller screens */
+  .arrow {
+    right: 5px;
+    top: 125px;
+    font-size: 40px;
+  }
+
+  /* Adjust timestamp animation for smaller screens */
+  .timestamp {
+    animation: slideInFromLeft 0.5s ease;
   }
 }
