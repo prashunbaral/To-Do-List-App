@@ -6,7 +6,6 @@ import { EditToDoForm } from "./EditToDoForm";
 
 export const ToDoWrapper = () => {
   const [todos, setTodos] = useState([]);
-  const [showCompleted, setShowCompleted] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
 
