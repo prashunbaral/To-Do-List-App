@@ -59,10 +59,6 @@ export const ToDoWrapper = () => {
     return todos.filter((todo) => todo.completed);
   };
 
-  const handleViewCompleted = () => {
-    setShowCompleted(!showCompleted);
-  };
-
   const handleFilterChange = (filter) => {
     setSelectedFilter(filter);
     setIsFilterMenuOpen(false);
