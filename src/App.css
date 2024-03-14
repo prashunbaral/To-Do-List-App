@@ -212,6 +212,12 @@ h1 {
   animation: slideInFromLeft 0.5s ease; /* Apply animation */
 }
 
+.filter-button.active {
+  background-color: #8758ff;
+  color: white;
+}
+
+
 footer {
   font-size: 10px;
 }

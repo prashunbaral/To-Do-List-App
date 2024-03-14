@@ -82,13 +82,51 @@ export const ToDoWrapper = () => {
   return (
     <div className='ToDoWrapper'>
       <h1>Get Shits Done!</h1>
-      <TodoForm addTodo={addTodo} showFilterMenu={handleFilterClick} isFilterMenuOpen={isFilterMenuOpen} />
+      <TodoForm addTodo={addTodo} showFilterMenu={handleFilterClick} isFilterMenuOpen={isFilterMenuOpen}
+      selectedFilter={selectedFilter}
+      setSelectedFilter={setSelectedFilter}
+      />
       {isFilterMenuOpen && (
         <div className="filter-menu">
-          <button onClick={() => handleFilterChange('all')}>All</button>
-          <button onClick={() => handleFilterChange('completed')}>Completed</button>
-          <button onClick={() => handleFilterChange('notCompleted')}>Not Completed</button>
-          <button onClick={() => handleFilterChange('recent')}>Recent</button>
+          <button
+        onClick={() => {
+          handleFilterChange('all')
+          setSelectedFilter('all');
+        }}
+        className={`filter-button ${selectedFilter === 'all' ? 'active' : ''}`}
+      >
+        All
+      </button>
+
+      <button
+        onClick={() => {
+          handleFilterChange('completed')
+          setSelectedFilter('completed');
+        }}
+        className={`filter-button ${selectedFilter === 'completed' ? 'active' : ''}`}
+      >
+        Completed
+      </button>
+
+      <button
+        onClick={() => {
+          handleFilterChange('notCompleted')
+          setSelectedFilter('notCompleted');
+        }}
+        className={`filter-button ${selectedFilter === 'notCompleted' ? 'active' : ''}`}
+      >
+        Not Completed
+      </button>
+
+      <button
+        onClick={() => {
+          handleFilterChange('recent')
+          setSelectedFilter('recent');
+        }}
+        className={`filter-button ${selectedFilter === 'recent' ? 'active' : ''}`}
+      >
+        Recent
+      </button>
         </div>
       )}
       {filteredTodos().map((todo) =>

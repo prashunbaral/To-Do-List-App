@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretUp, faFilter } from '@fortawesome/free-solid-svg-icons';
 
-export const TodoForm = ({ addTodo, showFilterMenu, isFilterMenuOpen }) => {
+export const TodoForm = ({ addTodo, showFilterMenu, isFilterMenuOpen, selectedFilter, setSelectedFilter }) => {
   const [value, setValue] = useState('');
 
   const handleSubmit = (e) => {
